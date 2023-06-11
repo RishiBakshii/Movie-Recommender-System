@@ -87,6 +87,9 @@ def recommend():
     
     for movie_ids in recommended_movie_ids: 
         final_recommendation.append(get_movie_details(movie_ids))
+
+    with open("temp.py",'w') as f:
+        f.write(f'{final_recommendation}')
     
     return render_template("home.html",recommendations=final_recommendation,movieNames=df['title'],cast_details=cast_details)
 
