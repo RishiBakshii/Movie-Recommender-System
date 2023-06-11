@@ -120,31 +120,31 @@ Merged all the data fetched from both api's about [ MovieDetails CastDetails ]
 
 Clone the project
 
-```bash
+```cmd
   git clone https://github.com/RishiBakshii/Movie-Recommender-System.git
 ```
 
 Go to the project directory
 
-```bash
+```cmd
   cd path/to/the/cloned/repository
 ```
 
 Download this file **similarity.pkl** from [google-drive-link](https://drive.google.com/file/d/1tcx3L-kCYbf2s2TeFQ75_SeP49MciHu3/view?usp=sharing)
 
-```bash
+```cmd
   Make sure to move this file in the project directory
 ```
 
 Install dependencies
 
-```bash
+```cmd
   pip install -r requirements.txt
 ```
 
 Start the server
 
-```bash
+```cmd
   py app.py
 ```
 
