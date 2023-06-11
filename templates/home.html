@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlickFinder -Movie Match</title>
+    <link rel="shortcut icon" href="./static/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./static/css/home.css">
+    <link rel="stylesheet" href="./static/css/responsive.css">
+    <link rel="stylesheet" href="./static/css/customScrollbar.css">
+</head>
+<body>
+    <header id="header" class="header">
+        <h1 id="heading" class="heading">
+            FlickFinder -Movie Match🍿
+        </h1>
+    </header>
+
+    <main class="main">
+
+        <form action="/getrecommendations" method="post">  
+
+          <section class="recommendation-section">
+
+            <select required name="selected-movie" id="select-box">
+                <option disabled selected value="">Select a Movie</option>
+                {% for movie in movieNames %}
+                <option  value="{{movie}}">{{movie.capitalize()}}</option>
+                {% endfor %}
+            </select>
+
+
+            <button class="recommend-btn" type="submit" id="recommend-btn">Recommend</button>
+            
+
+            <div class="recommendation-result-grid">
+
+                {% if recommendations %}
+
+                {% for data in recommendations %} 
+
+                <div class="grid-item">
+                    <div class="layout">
+                        <img src="{{data['image_path']}}" alt="movie posteer">
+                        <p>{{data['title']}}</p>
+                    </div>
+                </div>
+
+                {% endfor %}
+                {% endif %}
+            </div>
+
+          </section>
+        </form> 
+
+
+        <section class="starcast-section">
+
+            {% for data in recommendations %}
+            <div class="movie-cards">
+
+                <div class="photo-and-details-container">
+                    <div class="photo-container">
+                        <img src="{{data['image_path']}}" alt="image">
+                    </div>
+                    <div class="details-container">
+        
+                        <h1>{{data['title'].capitalize()}}</h1>
+                        <p>{{data['realease_date']}}</p> 
+                        <p>{{data['genres']}}</p>
+                        <p>{{data['runtime']}} mins</p>
+                        <h2>User rating - {{data['user_rating']}}</h2>
+                        <h3>Overview</h3>
+                        <p class="overview-text">
+                            {{data['overview']}}
+                        </p>
+                        <h4>StarCast</h4>
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="starcast-details-grid">
+
+                    {% for cast_details in data['cast'] %}
+                    <div class="grid-item-starcast">
+                        <div class="cast-container">
+                            <img class="star-cast-image" src="{{cast_details['image_path']}}" alt="☹️">
+                            <p>{{cast_details['original_name'].capitalize()}}</p>
+                            <p>{{cast_details['character'].capitalize()}}</p> 
+                        </div> 
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+
+
+            </div>
+            {% endfor %}
+            
+
+
+        </section>
+
+
+
+
+
+    </main>
+</body>
+<script src="./static/javascript/home.js"></script>
+</html>
