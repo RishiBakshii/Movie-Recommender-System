@@ -1,0 +1,177 @@
+@media (max-width:1335px) {
+
+    .recommendation-section select{
+        width: 65vw;
+    }
+
+    html{
+        font-size: .9rem;
+    }
+
+    .star-cast-image{
+        height: 14rem;
+    }
+    
+}
+
+@media (max-width:1000px) {
+    
+    .photo-container img {
+        height: 35rem;
+    }
+
+    .star-cast-image{
+        height: 12rem;
+    }
+    .recommendation-result-grid img {
+        height: 17rem;
+
+    }
+    .photo-and-details-container{
+        flex-direction: column;
+    }
+    
+}
+
+@media (max-width:852px) {
+    
+    html{
+        font-size: .87rem;
+    }
+
+    .photo-container img {
+        height: 30rem;
+    }
+
+    .star-cast-image{
+        height: 12rem;
+    }
+    .recommendation-result-grid img {
+        height: 17rem;
+
+
+    }
+
+    .recommendation-section select{
+        /* padding: 1.4rem; */
+    }
+
+    .recommendation-result-grid{
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .starcast-section{
+        width: 95%;
+    }
+
+    .photo-container img{
+        height: 32rem;
+    }
+
+    .recommend-btn{
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+}
+
+
+@media (max-width:802px){
+
+
+    .recommendation-section select {
+        width: 90vw;
+    }
+
+}
+@media (max-width:786px){
+
+    .star-cast-image{
+        height: 10rem;
+    }
+
+    .photo-container img{
+        height: 30rem;
+    }
+
+}
+@media (max-width:700px){
+
+    .photo-container img{
+        height: 25rem;
+    }
+
+    html{
+        font-size: .8rem;
+    }
+
+}
+@media (max-width:550px){
+
+    .recommendation-section select {
+        font-size: 1.2rem;
+    }
+
+}
+@media (max-width:500px){
+
+    .recommendation-result-grid img {
+        height: 13rem;
+    }
+}
+
+
+@media (max-width:478px){
+
+    .starcast-details-grid{
+        grid-template-columns: repeat(3,1fr);
+        row-gap: 1.8rem;
+    }
+}
+
+@media (max-width:463px){
+
+    .recommendation-section select {
+        font-size: 1rem;
+    }
+
+    .recommendation-result-grid{
+        grid-template-columns: repeat(2,1fr);
+        row-gap: 1.8rem;
+    }
+    .recommendation-result-grid img{
+        height: 16rem;
+    }
+
+    .recommend-btn{
+        padding: 1.3rem 3rem;
+    }
+
+
+
+}
+@media (max-width:407px){
+
+    .recommendation-section select {
+        padding-left: .5rem;
+        padding-right: 0rem;
+    }
+
+    .recommend-btn{
+        font-size: 1.1rem;
+    }
+    .heading{
+        font-size: 2rem;
+    }
+
+}
+@media (max-width:385px){
+
+    .recommendation-section select {
+        width: 100vw;
+    }
+
+    .recommendation-section select option{
+        font-size: .9rem;
+    }
+}

@@ -1,0 +1,213 @@
+*{
+    padding: 0;
+    margin: 0;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+body{
+    background: url('https://wallpaperaccess.com/full/1512217.jpg');
+    background-blend-mode: darken;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.header{
+    background-color:#10101069;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    height: 9rem;
+    font-size: 1.1rem;
+    width: 100vw;
+    box-shadow: 0 0 1rem 1px rgb(60, 0, 255);
+    transition: .5s;
+}
+
+.header:hover{
+    box-shadow: 0 1rem 100rem 1px rgb(60, 0, 255);
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 9rem;
+}
+
+.recommendation-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.recommendation-section select{
+    padding: 1.4rem 2rem;
+    font-size: 1.4rem;
+    border-radius: .8rem;
+    width: 50vw;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: .4s;
+}
+.recommendation-section select:hover{
+    background-color: rgba(255, 255, 255, 1);
+}
+.recommend-btn{
+    margin-top: 1rem;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    border-radius: .6rem;
+    transition: .4s ease-in-out;
+    border: none;
+}
+.recommend-btn:hover{
+    box-shadow:inset 12rem 0rem 100rem 1px rgba(130, 120, 141, 0.173);
+    background-color: white;
+    
+}
+
+.recommendation-result-grid{
+    display: grid;
+    margin-top: 2rem;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(1,1fr);
+    align-items: center;
+    justify-content: center;
+    row-gap: 1.8rem;
+    color: white;
+    /* background-color: red; */
+}
+.recommendation-result-grid img{
+    box-shadow: 0 0 1rem 1px white;
+    height: 20rem;
+}
+
+.recommendation-result-grid p{
+    font-size: 1.2rem;
+    margin-top: .5rem;
+}
+.grid-item{
+    margin: 1rem 1rem;
+    text-align: center;
+}
+
+.layout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* STARTCAST SECTION */
+.starcast-section{
+    /* background-color: rgba(255, 255, 255, 0.537); */
+    margin-top: 6rem;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.movie-cards{
+    display: flex;
+    margin-top: 4rem;
+    width: 100%;
+    justify-content: center;
+    border-radius: .8rem;
+    flex-direction: column;
+    /* background-color: yellow; */
+}
+
+.photo-and-details-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.photo-container img{
+    border-radius: .8rem;
+    height: 40rem;
+}
+
+.details-container{
+    flex: 1;
+    color: rgba(255, 255, 255, 0.876);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 3rem;
+    border-radius: .8rem;
+    /* background-color: brown; */
+
+}
+
+.details-container h1{
+    font-size: 2.5rem;
+}
+.details-container p{
+    font-size: 1.3rem;
+    margin: .7rem 0rem;
+}
+.details-container h2{
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+.details-container h3{
+    font-size: 1.8rem;
+    margin-top: 2rem;
+}
+.overview-text{
+    line-height: 1.8rem;
+}
+.details-container h4{
+    font-size: 2.7rem;
+    margin-top: 4rem;
+}
+
+
+.starcast-details-grid{
+    margin: 1.5rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    justify-items: center;
+    align-content: center;
+    color: white;
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+}
+
+.grid-item-starcast p{
+    word-break: keep-all;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.cast-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.star-cast-image{
+    transition: .4s;
+    margin-bottom: .9rem;
+    height: 15rem;
+}
+.star-cast-image:hover{
+    box-shadow: 0 1rem 100rem 1px rgba(255, 255, 255, 0.784);
+    transform: translateY(1%);
+}
+

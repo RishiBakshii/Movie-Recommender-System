@@ -2,6 +2,7 @@ from flask import Flask,render_template,request,jsonify
 import requests,pickle
 import pandas as pd
 import numpy as np
+from flask_cors import CORS
 
 
 df=pd.DataFrame(pickle.load(open("movies.pkl",'rb')))
@@ -12,12 +13,15 @@ BASE_URL = 'https://api.themoviedb.org/3/movie/'
 
 
 app=Flask(__name__)
+CORS(app)
 
-@app.route('/')
-def home():
-    return render_template("home.html",movieNames=df['title'],recommendation=False)
+@app.route('/getmovienames',methods=['GET'])
+def movieList():
+    return jsonify({
+        "movie_list":list(df['title'])
+    })
 
-@app.route('/fetchDataFromApi')
+
 def get_movie_details(movie_id):
 
 
@@ -71,13 +75,14 @@ def get_movie_details(movie_id):
     else:
         return None
 
-@app.route('/getrecommendations',methods=['POST'])
-def recommend():    
+@app.route('/getrecommendations/<movieName>',methods=['POST'])
+def recommend(movieName):    
+
     recommended_movie_ids=[]
     cast_details=[]
     final_recommendation=[]
 
-    movie=request.form['selected-movie']
+    movie=movieName
     index_of_movie=df[df['title']==movie].index[0]
     recommend_movie_index=pd.Series(similarity[index_of_movie]).sort_values(ascending=False)[1:6].index
 
@@ -87,11 +92,11 @@ def recommend():
     
     for movie_ids in recommended_movie_ids: 
         final_recommendation.append(get_movie_details(movie_ids))
-
-    with open("temp.py",'w') as f:
-        f.write(f'{final_recommendation}')
     
-    return render_template("home.html",recommendations=final_recommendation,movieNames=df['title'],cast_details=cast_details)
+    # return render_template("home.html",recommendations=final_recommendation,movieNames=df['title'],cast_details=cast_details)
+    return jsonify({
+        "recommendations":final_recommendation,
+    })
 
 
 if __name__=="__main__":
