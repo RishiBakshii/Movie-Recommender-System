@@ -3,8 +3,8 @@
 
 It is a ml powered web app that recommends movies based on selection along with their details
 
-![Ui image](https://github.com/RishiBakshii/Movie-Recommender-System/blob/main/static/Images/ui%20image%201.png?raw=true)
-![ui image 2](https://github.com/RishiBakshii/Movie-Recommender-System/blob/main/static/Images/ui%20image%202.png?raw=true)
+![Ui image](https://github.com/RishiBakshii/Movie-Recommender-System/blob/main/backend/static/Images/ui%20image%201.png?raw=true)
+![ui image 2](https://github.com/RishiBakshii/Movie-Recommender-System/blob/main/backend/static/Images/ui%20image%202.png?raw=true)
 
 
 
