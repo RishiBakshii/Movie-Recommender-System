@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./css/Home.css";
 import "./css/HomeResponsive.css";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
   const BASE_URL = "http://127.0.0.1:5000";
@@ -9,6 +11,7 @@ function Home() {
   const [movieList, setMovieList] = useState([]);
   const [selection, setSelecttion] = useState("");
   const [recommendations, setRecommendations] = useState([]);
+  const navigate = useNavigate();
 
   const getMovieList = async () => {
     try {
@@ -51,6 +54,10 @@ function Home() {
     }
   };
 
+  const handlePosterClick = (movieName) => {
+    navigate(`/moviedetails/${movieName}`);
+  };
+
   return (
     <>
       <Navbar />
@@ -86,7 +93,11 @@ function Home() {
             <div className="recommendation-result-grid">
               {recommendations.map((recommendation) => {
                 return (
-                  <div className="grid-item">
+                  <div
+                    key={recommendation.title}
+                    className="grid-item"
+                    onClick={() => handlePosterClick(recommendation.title)}
+                  >
                     <div className="layout">
                       <img src={recommendation.image_path} alt="movie poster" />
                       <p>{recommendation.title}</p>
@@ -103,13 +114,21 @@ function Home() {
             ? recommendations.map((recommend) => {
                 return (
                   <>
-                    <div className="movie-cards">
+                    <div key={recommend.title} className="movie-cards">
                       <div className="photo-and-details-container">
                         <div className="photo-container">
-                          <img src={recommend.image_path} alt="image" />
+                          <img
+                            src={recommend.image_path}
+                            alt="image"
+                            onClick={() => handlePosterClick(recommend.title)}
+                          />
                         </div>
                         <div className="details-container">
-                          <h1>{recommend.title}</h1>
+                          <h1
+                            onClick={() => handlePosterClick(recommend.title)}
+                          >
+                            {recommend.title}
+                          </h1>
                           <p>{recommend.release_data}</p>
                           <p>{recommend.genres}</p>
                           <p>{recommend.runtime} mins</p>
@@ -122,7 +141,10 @@ function Home() {
                       <div className="starcast-details-grid">
                         {recommend.cast.map((cast_details) => {
                           return (
-                            <div className="grid-item-starcast">
+                            <div
+                              key={recommend.movie_id}
+                              className="grid-item-starcast"
+                            >
                               <div className="cast-container">
                                 <img
                                   className="star-cast-image"
@@ -143,6 +165,7 @@ function Home() {
             : ""}
         </section>
       </main>
+      <Footer />
     </>
   );
 }

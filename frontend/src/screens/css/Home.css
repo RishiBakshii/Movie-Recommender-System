@@ -66,12 +66,15 @@ body{
     padding: 1.5rem 3rem;
     font-size: 1.2rem;
     border-radius: .6rem;
-    transition: .4s ease-in-out;
+    transition: .4s;
     border: none;
+    width: 16rem;
 }
 .recommend-btn:hover{
     box-shadow:inset 12rem 0rem 100rem 1px rgba(130, 120, 141, 0.173);
-    background-color: white;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    box-shadow:  1rem  50rem 200rem 20rem rgba(255, 255, 255, 0.383);
     
 }
 
@@ -84,7 +87,6 @@ body{
     justify-content: center;
     row-gap: 1.8rem;
     color: white;
-    /* background-color: red; */
 }
 .recommendation-result-grid img{
     box-shadow: 0 0 1rem 1px white;
@@ -98,6 +100,12 @@ body{
 .grid-item{
     margin: 1rem 1rem;
     text-align: center;
+    cursor: pointer;
+    transition: .1s;
+}
+
+.grid-item:hover{
+    opacity: .9;
 }
 
 .layout{
@@ -110,7 +118,6 @@ body{
 
 /* STARTCAST SECTION */
 .starcast-section{
-    /* background-color: rgba(255, 255, 255, 0.537); */
     margin-top: 6rem;
     width: 90%;
     display: flex;
@@ -125,20 +132,36 @@ body{
     justify-content: center;
     border-radius: .8rem;
     flex-direction: column;
-    /* background-color: yellow; */
+    transition: 1s;
+    box-shadow:  -110rem 0rem 1rem 1px rgb(255, 255, 255);
+    padding: 1rem;
+}
+
+.movie-cards:hover{
+    box-shadow:0rem 0 1rem 1px white;
 }
 
 .photo-and-details-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: red; */
     width: 100%;
 }
 
 .photo-container img{
     border-radius: .8rem;
     height: 40rem;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.photo-container{
+    transition: .4s;
+}
+
+.photo-container:hover{
+    box-shadow: 0rem 1rem 1rem 1px rgb(25, 43, 125);
+    opacity: .9;
 }
 
 .details-container{
@@ -150,12 +173,12 @@ body{
     flex-direction: column;
     padding: 3rem;
     border-radius: .8rem;
-    /* background-color: brown; */
 
 }
 
 .details-container h1{
     font-size: 2.5rem;
+    cursor: pointer;
 }
 .details-container p{
     font-size: 1.3rem;

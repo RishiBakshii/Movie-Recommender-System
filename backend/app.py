@@ -21,6 +21,12 @@ def movieList():
         "movie_list":list(df['title'])
     })
 
+@app.route('/reviews/<movieid>',methods=['POST'])
+def fetchMovieReviews(movieid):
+    url=f'{BASE_URL}{movieid}/{API_KEY}'
+    response=requests.get(url)
+    return response
+
 
 def get_movie_details(movie_id):
 
@@ -62,7 +68,8 @@ def get_movie_details(movie_id):
         user_rating=movie_data['vote_average']
         overview=movie_data['overview']
 
-        return{
+        return {
+            'movie_id':f'{movie_id}',
             'image_path':image_path,
             'title':title,
             'realease_date':realease_date,
