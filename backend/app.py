@@ -49,7 +49,20 @@ def get_movie_details(movie_id):
             'image_path':f"https://image.tmdb.org/t/p/original/{i['profile_path']}",
         })
 
+
+    # movie review
+    reviews=[]
+
+    reviews_url=f'https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key={API_KEY}'
+    reviewsResponse=requests.get(reviews_url)
+
+    if(reviewsResponse.status_code==200):
+        reviewsdata=reviewsResponse.json()['results']
     
+    for i in reviewsdata:
+        reviews.append(i['content'])
+
+
 
     # movieDetails
     url = f'{BASE_URL}{movie_id}?api_key={API_KEY}'
@@ -78,6 +91,7 @@ def get_movie_details(movie_id):
             'user_rating':user_rating,
             'overview':overview,
             'cast':cast_details,
+            'reviews':reviews
         }
     else:
         return None

@@ -4,6 +4,7 @@ import "./css/Home.css";
 import "./css/HomeResponsive.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import MovieCard from "../components/MovieCard";
 
 function Home() {
   const BASE_URL = "http://127.0.0.1:5000";
@@ -54,8 +55,21 @@ function Home() {
     }
   };
 
-  const handlePosterClick = (movieName) => {
-    navigate(`/moviedetails/${movieName}`);
+  const handlePosterClick = (movie_id,title,release_date,image_path,genres,runtime,user_rating,overview,recommendation) => {
+
+    navigate(`/moviedetails/${movie_id}`, {
+      state: {
+        movie_id:movie_id,
+        title: title,
+        release_date: release_date,
+        image_path: image_path,
+        genres: genres,
+        runtime: runtime,
+        user_rating: user_rating,
+        overview: overview,
+        recommendation: recommendation,
+      },
+    });
   };
 
   return (
@@ -96,7 +110,19 @@ function Home() {
                   <div
                     key={recommendation.title}
                     className="grid-item"
-                    onClick={() => handlePosterClick(recommendation.title)}
+                    onClick={() =>
+                      handlePosterClick(
+                        recommendation.movie_id,
+                        recommendation.title,
+                        recommendation.release_date,
+                        recommendation.image_path,
+                        recommendation.genres,
+                        recommendation.runtime,
+                        recommendation.user_rating,
+                        recommendation.overview,
+                        recommendation
+                      )
+                    }
                   >
                     <div className="layout">
                       <img src={recommendation.image_path} alt="movie poster" />
@@ -114,51 +140,18 @@ function Home() {
             ? recommendations.map((recommend) => {
                 return (
                   <>
-                    <div key={recommend.title} className="movie-cards">
-                      <div className="photo-and-details-container">
-                        <div className="photo-container">
-                          <img
-                            src={recommend.image_path}
-                            alt="image"
-                            onClick={() => handlePosterClick(recommend.title)}
-                          />
-                        </div>
-                        <div className="details-container">
-                          <h1
-                            onClick={() => handlePosterClick(recommend.title)}
-                          >
-                            {recommend.title}
-                          </h1>
-                          <p>{recommend.release_data}</p>
-                          <p>{recommend.genres}</p>
-                          <p>{recommend.runtime} mins</p>
-                          <h2>User rating - {recommend.user_rating}</h2>
-                          <h3>Overview</h3>
-                          <p className="overview-text">{recommend.overview}</p>
-                          <h4>StarCast</h4>
-                        </div>
-                      </div>
-                      <div className="starcast-details-grid">
-                        {recommend.cast.map((cast_details) => {
-                          return (
-                            <div
-                              key={recommend.movie_id}
-                              className="grid-item-starcast"
-                            >
-                              <div className="cast-container">
-                                <img
-                                  className="star-cast-image"
-                                  src={cast_details.image_path}
-                                  alt="☹️"
-                                />
-                                <p>{cast_details.original_name}</p>
-                                <p>{cast_details.character}</p>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
+                    <MovieCard
+                      key={recommend.title}
+                      title={recommend.title}
+                      release_date={recommend.release_date}
+                      image_path={recommend.image_path}
+                      genres={recommend.genres}
+                      runtime={recommend.runtime}
+                      user_rating={recommend.user_rating}
+                      overview={recommend.overview}
+                      handlePosterClick={handlePosterClick}
+                      recommend={recommend}
+                    />
                   </>
                 );
               })

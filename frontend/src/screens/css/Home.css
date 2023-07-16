@@ -234,3 +234,30 @@ body{
     transform: translateY(1%);
 }
 
+.reviews-section{
+    width: 85%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem;
+    flex-direction: column;
+    color: white;
+}
+
+.reviews-section h1{
+    font-size: 3rem;
+}
+
+.review-text-container{
+    padding: 1rem;
+}
+
+.review-text-container p{
+    margin-top: 2rem;
+    margin-bottom: 0rem;
+    background-color: rgba(56, 57, 64, 0.121);
+    padding: 2rem;
+    line-height: 2rem;
+    border-radius: .4rem;
+    font-size: 1.35rem;
+}
