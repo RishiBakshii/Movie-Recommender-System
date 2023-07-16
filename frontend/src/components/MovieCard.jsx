@@ -11,7 +11,10 @@ function MovieCard({
   overview,
   handlePosterClick,
   recommend,
-}) {
+}) 
+
+{
+  console.log(recommend)
   return (
     <div key={title} className="movie-cards">
       <div className="photo-and-details-container">
@@ -19,11 +22,13 @@ function MovieCard({
           <img
             src={image_path}
             alt="image"
-            onClick={() => handlePosterClick(movie_id,title,release_date,image_path,genres,runtime,user_rating,overview,recommend)}
+            onClick={() => handlePosterClick(movie_id, title, recommend)}
           />
         </div>
         <div className="details-container">
-          <h1 onClick={() => handlePosterClick(movie_id,title,release_date,image_path,genres,runtime,user_rating,overview,recommend)}>{title}</h1>
+          <h1 onClick={() => handlePosterClick(movie_id, title, recommend)}>
+            {title}
+          </h1>
           <p>{release_date}</p>
           <p>{genres}</p>
           <p>{runtime} mins</p>
@@ -34,7 +39,9 @@ function MovieCard({
         </div>
       </div>
       <div className="starcast-details-grid">
-        {recommend.cast.map((cast_details) => {
+        {/* {
+        recommend.cast.length==0?(
+        recommend.cast.map((cast_details) => {
           return (
             <div key={recommend.movie_id} className="grid-item-starcast">
               <div className="cast-container">
@@ -48,7 +55,12 @@ function MovieCard({
               </div>
             </div>
           );
-        })}
+        })
+
+        ):(<h1>Data Not loaded</h1>)
+
+
+} */}
       </div>
     </div>
   );

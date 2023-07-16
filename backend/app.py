@@ -21,12 +21,6 @@ def movieList():
         "movie_list":list(df['title'])
     })
 
-@app.route('/reviews/<movieid>',methods=['POST'])
-def fetchMovieReviews(movieid):
-    url=f'{BASE_URL}{movieid}/{API_KEY}'
-    response=requests.get(url)
-    return response
-
 
 def get_movie_details(movie_id):
 
@@ -114,11 +108,25 @@ def recommend(movieName):
     for movie_ids in recommended_movie_ids: 
         final_recommendation.append(get_movie_details(movie_ids))
     
-    # return render_template("home.html",recommendations=final_recommendation,movieNames=df['title'],cast_details=cast_details)
     return jsonify({
         "recommendations":final_recommendation,
     })
 
+
+@app.route("/getdetails/<movieName>",methods=['GET'])
+def getSpecificMovieDetails(movieName):
+
+
+    movie=movieName
+    index_of_movie=df[df['title']==movie].index[0]
+    recommend_movie_index=pd.Series(similarity[index_of_movie]).sort_values(ascending=False).index[0]
+
+    # for movies in list(df.loc[recommend_movie_index,'movie_id'].values):
+    #     recommended_movie_ids.append(movies)
+
+    return jsonify({
+        'movieDetails':get_movie_details(recommend_movie_index)
+    })
 
 if __name__=="__main__":
     app.run(debug=True)

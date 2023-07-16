@@ -55,21 +55,8 @@ function Home() {
     }
   };
 
-  const handlePosterClick = (movie_id,title,release_date,image_path,genres,runtime,user_rating,overview,recommendation) => {
-
-    navigate(`/moviedetails/${movie_id}`, {
-      state: {
-        movie_id:movie_id,
-        title: title,
-        release_date: release_date,
-        image_path: image_path,
-        genres: genres,
-        runtime: runtime,
-        user_rating: user_rating,
-        overview: overview,
-        recommendation: recommendation,
-      },
-    });
+  const handlePosterClick = (movie_id,title,recommendation) => {
+    navigate(`/moviedetails/${title}`);
   };
 
   return (
@@ -114,12 +101,6 @@ function Home() {
                       handlePosterClick(
                         recommendation.movie_id,
                         recommendation.title,
-                        recommendation.release_date,
-                        recommendation.image_path,
-                        recommendation.genres,
-                        recommendation.runtime,
-                        recommendation.user_rating,
-                        recommendation.overview,
                         recommendation
                       )
                     }
