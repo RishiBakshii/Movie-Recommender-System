@@ -255,9 +255,10 @@ body{
 .review-text-container p{
     margin-top: 2rem;
     margin-bottom: 0rem;
-    background-color: rgba(111, 112, 117, 0.121);
+    background-color: rgba(94, 96, 106, 0.69);
     padding: 2rem;
     line-height: 2rem;
     border-radius: .4rem;
     font-size: 1.35rem;
+    color: rgba(255, 255, 255, 0.827);
 }

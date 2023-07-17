@@ -55,7 +55,7 @@ function Home() {
     }
   };
 
-  const handlePosterClick = (movie_id,title,recommendation) => {
+  const handlePosterClick = (title) => {
     navigate(`/moviedetails/${title}`);
   };
 
@@ -65,19 +65,12 @@ function Home() {
       <main className="main">
         <form onSubmit={handleFormSubmit}>
           <section className="recommendation-section">
-            <select
-              required
-              name="selected-movie"
-              id="select-box"
-              value={selection}
-              onChange={(e) => setSelecttion(e.target.value)}
-            >
+            <select required name="selected-movie" id="select-box" value={selection} onChange={(e) => setSelecttion(e.target.value)}>
               <option disabled selected value="">
                 {movieList.length !== 0
                   ? "Select a Movie"
                   : "Loading Movies 🍔"}
               </option>
-
               {movieList.map((movie) => {
                 return (
                   <option key={movie} value={movie}>
@@ -87,24 +80,12 @@ function Home() {
               })}
             </select>
 
-            <button className="recommend-btn" type="submit" id="recommend-btn">
-              Recommend
-            </button>
+            <button className="recommend-btn" type="submit" id="recommend-btn">Recommend</button>
 
             <div className="recommendation-result-grid">
               {recommendations.map((recommendation) => {
                 return (
-                  <div
-                    key={recommendation.title}
-                    className="grid-item"
-                    onClick={() =>
-                      handlePosterClick(
-                        recommendation.movie_id,
-                        recommendation.title,
-                        recommendation
-                      )
-                    }
-                  >
+                  <div key={recommendation.title} className="grid-item" onClick={() => handlePosterClick(recommendation.title)}>
                     <div className="layout">
                       <img src={recommendation.image_path} alt="movie poster" />
                       <p>{recommendation.title}</p>
@@ -131,7 +112,7 @@ function Home() {
                       user_rating={recommend.user_rating}
                       overview={recommend.overview}
                       handlePosterClick={handlePosterClick}
-                      recommend={recommend}
+                      castData={recommend.cast}
                     />
                   </>
                 );

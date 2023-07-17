@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { useLocation, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 
 function MovieDetails() {
+
   const { name } = useParams();
+
   const [data, setData] = useState([]);
-  alert(name)
 
   const fetchMovieData = async () => {
     try {
@@ -15,10 +16,13 @@ function MovieDetails() {
         `http://127.0.0.1:5000/getdetails/${name}`
       );
       const json = await response.json();
-      setData(json.movieDetails);
+      await setData(()=>json.movieDetails);
+      
+
     } catch (error) {
       alert("server is down☹️");
     }
+
   };
 
   useEffect(() => {
@@ -30,7 +34,7 @@ function MovieDetails() {
       <Navbar />
       <main style={{ marginTop: "0rem" }} className="main">
         <div className="starcast-section">
-          {data.length !== [] ? (
+          {data.length !== 0 ? (
 
                 <MovieCard
                   title={data.title}
@@ -41,7 +45,7 @@ function MovieDetails() {
                   user_rating={data.user_rating}
                   overview={data.overview}
                   handlePosterClick={null}
-                  recommend={data}
+                  castData={data.cast}
                 />
             )
            : (
@@ -49,17 +53,18 @@ function MovieDetails() {
           )}
         </div>
 
-        {/* <section className="reviews-section">
-          <h1>Reviews </h1>
-
+        <section className="reviews-section">
+          <h1>Reviews</h1>
           <div className="review-text-container">
-            {
-              state.recommendation.reviews.map((moviereview)=>{
-                return <p>{moviereview}</p>
-              })
-            }
+            
+              {data.reviews && data.reviews.length !== 0 ? (
+                data.reviews.map((moviereview) => <p>{moviereview}</p>)
+              ) : (
+                <p>Loading reviews...</p>
+              )}
+            
           </div>
-        </section> */}
+        </section>
       </main>
 
       <Footer />

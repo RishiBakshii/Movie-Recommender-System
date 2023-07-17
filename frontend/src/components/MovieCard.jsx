@@ -1,32 +1,15 @@
 import React from "react";
 
-function MovieCard({
-  movie_id,
-  title,
-  release_date,
-  image_path,
-  genres,
-  runtime,
-  user_rating,
-  overview,
-  handlePosterClick,
-  recommend,
-}) 
-
-{
-  console.log(recommend)
+function MovieCard({movie_id,title,release_date,image_path,genres,runtime,user_rating,overview,handlePosterClick,castData}) {
   return (
     <div key={title} className="movie-cards">
+
       <div className="photo-and-details-container">
         <div className="photo-container">
-          <img
-            src={image_path}
-            alt="image"
-            onClick={() => handlePosterClick(movie_id, title, recommend)}
-          />
+          <img src={image_path} alt="image" onClick={() => handlePosterClick(title)}/>
         </div>
         <div className="details-container">
-          <h1 onClick={() => handlePosterClick(movie_id, title, recommend)}>
+          <h1 onClick={() => handlePosterClick(title)}>
             {title}
           </h1>
           <p>{release_date}</p>
@@ -39,11 +22,11 @@ function MovieCard({
         </div>
       </div>
       <div className="starcast-details-grid">
-        {/* {
-        recommend.cast.length==0?(
-        recommend.cast.map((cast_details) => {
+        {
+        castData.length!==0?(
+        castData.map((cast_details) => {
           return (
-            <div key={recommend.movie_id} className="grid-item-starcast">
+            <div key={castData.movie_id} className="grid-item-starcast">
               <div className="cast-container">
                 <img
                   className="star-cast-image"
@@ -56,11 +39,9 @@ function MovieCard({
             </div>
           );
         })
-
         ):(<h1>Data Not loaded</h1>)
 
-
-} */}
+}
       </div>
     </div>
   );

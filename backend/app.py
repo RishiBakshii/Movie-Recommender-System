@@ -113,16 +113,14 @@ def recommend(movieName):
     })
 
 
-@app.route("/getdetails/<movieName>",methods=['GET'])
+@app.route("/getdetails/<movieName>",methods=['GET','POST'])
 def getSpecificMovieDetails(movieName):
-
 
     movie=movieName
     index_of_movie=df[df['title']==movie].index[0]
     recommend_movie_index=pd.Series(similarity[index_of_movie]).sort_values(ascending=False).index[0]
 
-    # for movies in list(df.loc[recommend_movie_index,'movie_id'].values):
-    #     recommended_movie_ids.append(movies)
+    recommend_movie_index=df.loc[recommend_movie_index,'movie_id']
 
     return jsonify({
         'movieDetails':get_movie_details(recommend_movie_index)
