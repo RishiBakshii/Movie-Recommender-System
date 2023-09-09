@@ -4,4 +4,3 @@ pandas
 numpy
 flask_cors
 gunicorn
-pickle
