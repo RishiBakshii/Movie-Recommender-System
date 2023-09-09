@@ -21,10 +21,7 @@ def movieList():
         "movie_list":list(df['title'])
     })
 
-
 def get_movie_details(movie_id):
-
-
     # cast details
     cast_details=[]
 
@@ -95,7 +92,7 @@ def recommend(movieName):
 
     recommended_movie_ids=[]
     cast_details=[]
-    final_recommendation=[]
+    final_recommendation=[] 
 
     movie=movieName
     index_of_movie=df[df['title']==movie].index[0]
@@ -104,7 +101,6 @@ def recommend(movieName):
     for movies in list(df.loc[recommend_movie_index,'movie_id'].values):
         recommended_movie_ids.append(movies)
     
-    
     for movie_ids in recommended_movie_ids: 
         final_recommendation.append(get_movie_details(movie_ids))
     
@@ -112,10 +108,8 @@ def recommend(movieName):
         "recommendations":final_recommendation,
     })
 
-
 @app.route("/getdetails/<movieName>",methods=['GET','POST'])
 def getSpecificMovieDetails(movieName):
-
     movie=movieName
     index_of_movie=df[df['title']==movie].index[0]
     recommend_movie_index=pd.Series(similarity[index_of_movie]).sort_values(ascending=False).index[0]
