@@ -3,10 +3,11 @@ import requests,pickle
 import pandas as pd
 import numpy as np
 from flask_cors import CORS
+import joblib
 
 
-df=pd.DataFrame(pickle.load(open("movies.pkl",'rb')))
-similarity=pd.DataFrame(pickle.load(open("similarity.pkl",'rb')))
+df=pd.DataFrame(joblib.load(open("movies.pkl",'rb')))
+similarity=pd.DataFrame(joblib.load("similarity.pkl",'rb'))
 
 API_KEY= '94aa51b7bd714e4a65af319755ed562a'
 BASE_URL = 'https://api.themoviedb.org/3/movie/'
