@@ -1,6 +1,6 @@
 flask
 requests
-pandas
+pandas==2.1.0
 numpy
 flask_cors
 gunicorn
