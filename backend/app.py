@@ -5,7 +5,7 @@ import numpy as np
 from flask_cors import CORS
 
 
-df=pd.DataFrame(pickle.load(open("movies.pkl",'rb'),protocol=4))
+df=pd.DataFrame(pickle.load(open("movies.pkl",'rb')))
 similarity=pd.DataFrame(pickle.load(open("similarity.pkl",'rb')))
 
 API_KEY= '94aa51b7bd714e4a65af319755ed562a'
